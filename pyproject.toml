@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pd-book-tools"
+version = "0.1.0"
+description = "Python tools for working with public domain book scans"
+authors = [
+    { name = "CT", email = "concavetrillion@gmail.com" }
+]
+readme = "README.md"
+license = { text = "0BSD" }
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "opencv-python>=4.11.0",
+    "opencv-cuda>=0.0.2",
+    "numpy (>=2.2,<3)",
+    "ipywidgets>=8.1",
+    "ipython>=8.34",
+    "doctr>=1.9",
+    "torch>=2.6",
+    "pandas>=2.2.3",
+    "pytesseract>=0.3.13",
+    "sortedcontainers>=2.4",
+    "pre-commit (>=4.2.0,<5.0.0)",
+]
+
+[project.urls]
+Homepage = "https://github.com/ConcaveTrillion/pd-book-tools"
+
+[tool.setuptools.packages.find]
+include = ["pd_book_tools", "pd_book_tools.*"]
+
+[project.optional-dependencies]
+dev = [
+    "licensecheck",
+    "pytest>=8.3",
+    "flake8>=7.1",
+    "black>=25.1",
+    "isort>=6.0",
+    "mypy>=1.15",
+    "coverage>=7.7",
+]
+shapely = [
+    "shapely>=2.0",
+]
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | \venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.poetry.requires-plugins]
+poetry-plugin-export = ">=1.8"
